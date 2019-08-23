@@ -1,0 +1,9 @@
+import PALETTE from './palette'
+
+const Color = {
+  ...PALETTE,
+  BACKGROUND_HEADER: PALETTE.LIGHT_GRAYISH_BLUE,
+  BACKGROUND_FOOTER: PALETTE.LIGHT_GRAYISH_BLUE,
+}
+
+export default Color
