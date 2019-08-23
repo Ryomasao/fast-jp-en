@@ -4,21 +4,21 @@ import { css, jsx } from '@emotion/core'
 import { Color } from '../const'
 
 interface HeaderProps {
-  headerHeight: number
+  className?: string
 }
 
-const Header: React.FC<HeaderProps> = ({ headerHeight }) => {
+const headerStyle = css({
+  backgroundColor: Color.BACKGROUND_HEADER,
+})
+
+const Header: React.FC<HeaderProps> = ({ className }) => {
   // 親コンポーネントからもらう値でスタイルを書きたい
   // functionの中に書いてもパフォーマンス的に問題ないのかな？
-  const headerStyle = css({
-    position: 'fixed',
-    top: 0,
-    height: `${headerHeight}px`,
-    width: '100%',
-    backgroundColor: Color.BACKGROUND_HEADER,
-  })
-
-  return <header css={headerStyle}>header</header>
+  return (
+    <header css={headerStyle} className={className}>
+      header
+    </header>
+  )
 }
 
 export default Header

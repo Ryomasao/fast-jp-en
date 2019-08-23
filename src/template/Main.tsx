@@ -13,17 +13,31 @@ const globalStyle = css`
 
 const headerHeight = 60
 
+const headerStyle = css({
+  position: 'fixed',
+  top: 0,
+  height: `${headerHeight}px`,
+  width: '100%',
+})
+
 const mainStyle = css({
   marginTop: `${headerHeight}px`,
+})
+
+const footerStyle = css({
+  position: 'fixed',
+  bottom: 0,
+  height: '95px',
+  width: '100%',
 })
 
 const Main: React.FC = ({ children }) => {
   return (
     <div>
       <Global styles={globalStyle} />
-      <Header headerHeight={headerHeight} />
+      <Header css={headerStyle} />
       <main css={mainStyle}>{children}</main>
-      <Footer />
+      <Footer css={footerStyle} />
     </div>
   )
 }

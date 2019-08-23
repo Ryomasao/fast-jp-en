@@ -3,16 +3,25 @@ import React from 'react'
 import { css, jsx } from '@emotion/core'
 import { Color } from '../const'
 
+// https://emotion.sh/docs/typescript
+// cssで渡したプロパティは、classNameとして受け取れる
+
+// ?をつけることで省略可能なプロパティとして宣言できる
+// これをつけないと、Main.tsxでは、classNameに値をセットしてないのでTSでエラーになる
+interface FooterProps {
+  className?: string
+}
+
 const footerStyle = css({
-  position: 'fixed',
-  bottom: 0,
-  height: '95px',
-  width: '100%',
   backgroundColor: Color.BACKGROUND_FOOTER,
 })
 
-const Footer: React.FC = () => (
-    <footer css={footerStyle}>footer</footer>
-)
+const Footer: React.FC<FooterProps> = ({ className }) => {
+  return (
+    <footer css={footerStyle} className={className}>
+      footer
+    </footer>
+  )
+}
 
 export default Footer
