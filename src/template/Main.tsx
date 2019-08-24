@@ -1,6 +1,7 @@
 import React from 'react'
 /** @jsx jsx */
 import { css, jsx, Global } from '@emotion/core'
+import { Color } from '../const'
 import Header from '../organisms/Header'
 import Footer from '../organisms/Footer'
 
@@ -40,7 +41,7 @@ const headerStyle = css({
 const mainStyle = css({
   marginTop: `${headerHeight}px`,
   height: `calc(100vh - ${headerHeight}px)`,
-  backgroundColor: `gray`,
+  backgroundColor: Color.BACKGROUND_MAIN,
   overflow: 'scroll',
 })
 
