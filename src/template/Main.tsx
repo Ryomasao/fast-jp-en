@@ -4,10 +4,27 @@ import { css, jsx, Global } from '@emotion/core'
 import Header from '../organisms/Header'
 import Footer from '../organisms/Footer'
 
+interface MainProps {
+  className?: string
+}
+
+const Main: React.FC<MainProps> = ({ className, children }) => {
+  return (
+    <div className={className}>
+      <Global styles={globalStyle} />
+      <Header css={headerStyle} />
+      <main css={mainStyle}>{children}</main>
+      <Footer css={footerStyle} />
+    </div>
+  )
+}
+
 // TODO GlobalスタイルはApp.tsxに移行する
+// body全体にはスクロールはさせないようにする
 const globalStyle = css`
   body {
     margin: 0;
+    overflow: 'hidden';
   }
 `
 
@@ -22,6 +39,9 @@ const headerStyle = css({
 
 const mainStyle = css({
   marginTop: `${headerHeight}px`,
+  height: `calc(100vh - ${headerHeight}px)`,
+  backgroundColor: `gray`,
+  overflow: 'scroll',
 })
 
 const footerStyle = css({
@@ -30,16 +50,5 @@ const footerStyle = css({
   height: '95px',
   width: '100%',
 })
-
-const Main: React.FC = ({ children }) => {
-  return (
-    <div>
-      <Global styles={globalStyle} />
-      <Header css={headerStyle} />
-      <main css={mainStyle}>{children}</main>
-      <Footer css={footerStyle} />
-    </div>
-  )
-}
 
 export default Main
