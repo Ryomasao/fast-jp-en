@@ -59,6 +59,9 @@ module.exports = {
     indent: 'off',
     '@typescript-eslint/indent': 'off',
     '@typescript-eslint/no-unnecessary-type-assertion': 'error',
+    // const定義を使用箇所より前に定義しとけルール
+    // emotionのスタイル定義は、コンポーネントよりあとに描きたいのでoffにする
+    '@typescript-eslint/no-use-before-define': 'off',
 
     // prefer-arrow
     'prefer-arrow/prefer-arrow-functions': [
