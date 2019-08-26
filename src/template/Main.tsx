@@ -27,6 +27,10 @@ const globalStyle = css`
     margin: 0;
     overflow: 'hidden';
   }
+
+  p {
+    margin: 0;
+  }
 `
 
 const headerHeight = 60
