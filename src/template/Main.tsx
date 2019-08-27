@@ -23,9 +23,14 @@ const Main: React.FC<MainProps> = ({ className, children }) => {
 // TODO GlobalスタイルはApp.tsxに移行する
 // body全体にはスクロールはさせないようにする
 const globalStyle = css`
+  html {
+    font-size: 62.5%;
+  }
+
   body {
     margin: 0;
     overflow: 'hidden';
+    font-size: 1.4rem;
   }
 
   p {
