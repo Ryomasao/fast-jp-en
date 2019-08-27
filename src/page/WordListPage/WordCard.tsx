@@ -4,11 +4,15 @@ import { css, jsx } from '@emotion/core'
 import { ReactComponent as CheckedLogo } from '../../asetts/icon/checked.svg'
 import Card from '../../molecule/Card'
 
-const WordCard: React.FC = () => (
+interface WordCardProps {
+  text: string
+}
+
+const WordCard: React.FC<WordCardProps> = ({ text }) => (
   <Card css={WordCardStyle}>
     <div css={FlexStyle}>
       <div>
-        <p css={MainText}>これは猫ですか？</p>
+        <p css={MainText}>{text}</p>
         <p css={StatiSticksStyle}>出題回数: 1000 正答率: 99.98%</p>
       </div>
       <CheckedLogo />
