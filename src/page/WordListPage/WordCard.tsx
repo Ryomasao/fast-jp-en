@@ -2,19 +2,32 @@
 import React from 'react'
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
-import { Word } from 'MyModels'
 import { ReactComponent as CorrectLogo } from '../../asetts/icon/checked.svg'
 import { ReactComponent as IncorrectLogo } from '../../asetts/icon/cross.svg'
 import Card from '../../molecule/Card'
 
-interface WordCardProps extends Word {
+interface WordCardProps {
+  // 以下は、Wordとして切り出したいな
+  id: number
+  text: string
+  //
   status: number
   changeStatus: (id: number) => void
 }
 
-const WordCard: React.FC<WordCardProps> = ({ text, status, changeStatus }) => (
+const WordCard: React.FC<WordCardProps> = ({
+  text,
+  id,
+  status,
+  changeStatus,
+}) => (
   <Card css={WordCardStyle}>
-    <div css={FlexStyle} onClick={() => changeStatus(1)}>
+    <div
+      css={FlexStyle}
+      onClick={() => changeStatus(id)}
+      role="button"
+      tabIndex={0}
+    >
       <div>
         <p css={MainText}>{text}</p>
         <p css={StatiSticksStyle}>出題回数: 1000 正答率: 99.98%</p>

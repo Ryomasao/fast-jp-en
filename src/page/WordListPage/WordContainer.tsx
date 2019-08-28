@@ -8,29 +8,6 @@ import MainTemplate from '../../template/Main'
 import WordCard from './WordCard'
 
 const WordContainer: React.FC = () => {
-  // const wordList = [
-  //  {
-  //    id: 1,
-  //    jp: {
-  //      text: 'これは猫ですか？',
-  //    },
-  //    en: {
-  //      text: 'is this a cat?',
-  //    },
-  //  },
-  //  {
-  //    id: 2,
-  //    jp: {
-  //      text: 'これは犬ですか？',
-  //    },
-  //    en: {
-  //      text: 'is this a dog?',
-  //    },
-  //  },
-  // ]
-
-  // const wordList = useWordList()
-
   const [wordList, editWord] = useState([
     {
       id: 1,
