@@ -7,7 +7,7 @@ import 'slick-carousel/slick/slick-theme.css'
 import MainTemplate from '../../template/Main'
 import WordCard from './WordCard'
 
-const WordContainer: React.FC = () => {
+const WordContainer: React.FC = (props: any) => {
   const [wordList, editWord] = useState([
     {
       id: 1,
