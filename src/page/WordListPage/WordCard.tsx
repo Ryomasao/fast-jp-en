@@ -7,10 +7,12 @@ import { ReactComponent as IncorrectLogo } from '../../asetts/icon/cross.svg'
 import Card from '../../molecule/Card'
 
 interface WordCardProps {
-  // 以下は、Wordとして切り出したいな
+  // 型をまとめる単位が難しい
+  // APIからもらう情報をそのまま各コンポーネントに流し込む場合
+  // Stateの型をそのままPropsにもってきたい気もする
+  // でもオブジェクトの構造がAPIのレスポンスに依存するのもね
   id: number
   text: string
-  //
   status: number
   changeStatus: (id: number) => void
 }
