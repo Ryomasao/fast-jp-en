@@ -4,14 +4,14 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
 import { AppState } from '../../store'
-import { updateStatus as updateStatusType } from '../../store/word/actions'
 import MainTemplate from '../../components/template/Main'
 import WordCardList from './WordCardList'
 
 // Reduxから注入されるprops + αはこんな感じに書くといいみたい
 // type HogeProps = OwnProps & HogeState & HogeActions;
 interface WordActions {
-  updateStatus: typeof updateStatusType
+  updateStatus: (id: number) => void
+  getWordList: () => Promise<void>
 }
 
 type WordContainerProps = AppState & WordActions
@@ -19,9 +19,15 @@ type WordContainerProps = AppState & WordActions
 const WordContainer: React.FC<WordContainerProps> = ({
   wordState,
   updateStatus,
+  getWordList,
 }) => {
   return (
     <MainTemplate>
+      <div>
+        <button type="button" onClick={getWordList}>
+          fetch
+        </button>
+      </div>
       <Slider
         // スライド両脇のボタンは非表示
         arrows={false}

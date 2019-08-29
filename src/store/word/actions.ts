@@ -1,3 +1,4 @@
+import { fetchWordList } from '../../services/word'
 import { WordList, SET_WORD_LIST, UPDATE_STATUS, WordActionType } from './types'
 
 export const setWordList = (wordList: WordList): WordActionType => {
@@ -12,4 +13,8 @@ export const updateStatus = (id: number): WordActionType => {
     type: UPDATE_STATUS,
     payload: id,
   }
+}
+
+export const getWordList = () => async (dispatch: any) => {
+  const res = await fetchWordList()
 }
