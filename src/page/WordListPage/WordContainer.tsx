@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick-theme.css'
 
 import { AppState } from '../../store'
 import { updateStatus as updateStatusType } from '../../store/word/actions'
-import MainTemplate from '../../template/Main'
+import MainTemplate from '../../components/template/Main'
 import WordCardList from './WordCardList'
 
 // Reduxから注入されるprops + αはこんな感じに書くといいみたい
