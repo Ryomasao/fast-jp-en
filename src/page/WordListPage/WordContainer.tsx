@@ -4,13 +4,22 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
 import { AppState } from '../../store'
+import { updateStatus as updateStatusType } from '../../store/word/actions'
 import MainTemplate from '../../template/Main'
 import WordCardList from './WordCardList'
 
 // Reduxから注入されるprops + αはこんな感じに書くといいみたい
 // type HogeProps = OwnProps & HogeState & HogeActions;
+interface WordActions {
+  updateStatus: typeof updateStatusType
+}
 
-const WordContainer: React.FC<AppState> = ({ wordState }) => {
+type WordContainerProps = AppState & WordActions
+
+const WordContainer: React.FC<WordContainerProps> = ({
+  wordState,
+  updateStatus,
+}) => {
   return (
     <MainTemplate>
       <Slider
@@ -19,8 +28,16 @@ const WordContainer: React.FC<AppState> = ({ wordState }) => {
         // 無限スライドはしない
         infinite={false}
       >
-        <WordCardList lang="jp" wordState={wordState} />
-        <WordCardList lang="en" wordState={wordState} />
+        <WordCardList
+          lang="jp"
+          wordState={wordState}
+          updateStatus={updateStatus}
+        />
+        <WordCardList
+          lang="en"
+          wordState={wordState}
+          updateStatus={updateStatus}
+        />
       </Slider>
     </MainTemplate>
   )

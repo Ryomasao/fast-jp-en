@@ -22,12 +22,26 @@ export default (state = initialState, action: WordActionType) => {
       state = action.payload
 
       return state
-    case UPDATE_STATUS:
+    case UPDATE_STATUS: {
       /* eslint-disable no-param-reassign */
-      state.wordsList = state.wordsList.map(word => word)
+      const newWordsList = state.wordsList.map(word => {
+        if (word.id === action.payload) {
+          word.status = toggleStatus(word.status)
+        }
 
-      return state
+        return word
+      })
+
+      return { ...state, wordsList: newWordsList }
+    }
     default:
       return state
   }
+}
+
+const toggleStatus = (currentStatus: number): number => {
+  if (currentStatus === 0) return 1
+  if (currentStatus === 1) return 2
+
+  return 1
 }

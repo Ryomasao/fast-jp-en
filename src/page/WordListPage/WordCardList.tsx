@@ -7,17 +7,23 @@ import { WordContainer } from '../../store/word/types'
 
 // word[lang]でアクセスしているので、型をただのstringにするとtsエラーになる
 // typesに書くべきと思うけどひとまずここに書いとく
-type Lang = 'jp' | 'en'
 
+type Lang = 'jp' | 'en'
 interface OwnProps {
   lang: Lang
 }
 
-type WordCardListProps = AppState & OwnProps
+interface WordActions {
+  updateStatus: (id: number) => void
+}
 
-const WordCardList: React.FC<WordCardListProps> = ({ wordState, lang }) => {
-  const handleUpdate = () => {}
+type WordCardListProps = AppState & WordActions & OwnProps
 
+const WordCardList: React.FC<WordCardListProps> = ({
+  wordState,
+  lang,
+  updateStatus,
+}) => {
   return (
     <div css={WordListStyle}>
       {wordState.wordsList.map((word: WordContainer) => (
@@ -26,7 +32,7 @@ const WordCardList: React.FC<WordCardListProps> = ({ wordState, lang }) => {
           id={word.id}
           text={word[lang].text}
           status={word.status}
-          changeStatus={handleUpdate}
+          changeStatus={updateStatus}
         />
       ))}
     </div>
