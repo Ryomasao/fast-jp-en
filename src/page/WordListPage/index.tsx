@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { AppState } from '../../store'
-import { updateStatus } from '../../store/word/actions'
+import { updateStatus, getWordList } from '../../store/word/actions'
 import WordContainer from './WordContainer'
 
 const mapStateToProps = (state: AppState) => {
@@ -9,5 +9,5 @@ const mapStateToProps = (state: AppState) => {
 
 export default connect(
   mapStateToProps,
-  { updateStatus },
+  { updateStatus, getWordList },
 )(WordContainer)

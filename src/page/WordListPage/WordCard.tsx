@@ -4,7 +4,7 @@ import React from 'react'
 import { css, jsx } from '@emotion/core'
 import { ReactComponent as CorrectLogo } from '../../asetts/icon/checked.svg'
 import { ReactComponent as IncorrectLogo } from '../../asetts/icon/cross.svg'
-import Card from '../../molecule/Card'
+import Card from '../../components/molecule/Card'
 
 interface WordCardProps {
   // 型をまとめる単位が難しい

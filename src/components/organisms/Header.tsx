@@ -1,7 +1,7 @@
 import React from 'react'
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
-import { Color } from '../const'
+import { Color } from '../../const'
 
 interface HeaderProps {
   className?: string
