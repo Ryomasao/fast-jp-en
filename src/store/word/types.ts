@@ -5,7 +5,7 @@ export const UPDATE_STATUS = 'UPDATE_STATUS'
 // ACTION CREATETOR
 interface SetWordList {
   type: typeof SET_WORD_LIST
-  payload: WordList
+  payload: WordContainer[]
 }
 interface UpdateStatus {
   type: typeof UPDATE_STATUS
@@ -15,7 +15,8 @@ interface UpdateStatus {
 // action createtorが増えたら SetWordList | で足してくっぽい
 export type WordActionType = SetWordList | UpdateStatus
 // STATE TYPE
-export interface WordList {
+
+export interface WordState {
   wordsList: WordContainer[]
 }
 
@@ -29,3 +30,7 @@ export interface WordContainer {
 export interface Word {
   text: string
 }
+
+// export interface WordGetResponse {
+//
+// }
