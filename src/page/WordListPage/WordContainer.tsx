@@ -1,33 +1,32 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
-import { AppState } from '../../store'
-import MainTemplate from '../../components/template/Main'
+import MainTemplate from 'components/template/Main'
+import { AppState } from 'store'
 import WordCardList from './WordCardList'
 
 // Reduxから注入されるprops + αはこんな感じに書くといいみたい
 // type HogeProps = OwnProps & HogeState & HogeActions;
 interface WordActions {
+  getSentencesStart: () => void
   updateStatus: (id: number) => void
-  getWordList: () => Promise<void>
 }
 
 type WordContainerProps = AppState & WordActions
 
 const WordContainer: React.FC<WordContainerProps> = ({
   wordState,
+  getSentencesStart,
   updateStatus,
-  getWordList,
 }) => {
+  useEffect(() => {
+    getSentencesStart()
+  }, [])
+
   return (
     <MainTemplate>
-      <div>
-        <button type="button" onClick={getWordList}>
-          fetch
-        </button>
-      </div>
       <Slider
         // スライド両脇のボタンは非表示
         arrows={false}

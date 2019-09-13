@@ -1,9 +1,9 @@
 import React from 'react'
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
+import { WordContainer } from 'services/word/model'
 import { AppState } from '../../store'
 import WordCard from './WordCard'
-import { WordContainer } from '../../store/word/types'
 
 // word[lang]でアクセスしているので、型をただのstringにするとtsエラーになる
 // typesに書くべきと思うけどひとまずここに書いとく
@@ -26,11 +26,11 @@ const WordCardList: React.FC<WordCardListProps> = ({
 }) => {
   return (
     <div css={WordListStyle}>
-      {wordState.wordsList.map((word: WordContainer) => (
+      {wordState.sentences.map((word: WordContainer) => (
         <WordCard
           key={word.id}
           id={word.id}
-          text={word[lang].text}
+          text={word[lang].sentense}
           status={word.status}
           changeStatus={updateStatus}
         />

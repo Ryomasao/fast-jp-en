@@ -1,7 +1,13 @@
+import { WordContainer } from 'services/word/model'
 import api from '../api'
 
-export const fetchWordList = async () => {
-  const wordList = await api.get('/wordList')
+interface FetchWordResult {
+  wordList: WordContainer[]
+}
 
-  return wordList.data
+export const fetchWordList = async () => {
+  const response = await api.get('/sentences')
+  const sentences: FetchWordResult = response.data
+
+  return sentences
 }

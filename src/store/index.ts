@@ -1,12 +1,16 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-import wordReducer from './word/reducer'
+import createSagaMiddleware from 'redux-saga'
+import mySaga from 'sagas/word'
+import wordReducer from './sentences/reducer'
 
 const rootReducer = combineReducers({
   wordState: wordReducer,
 })
 
-const store = createStore(rootReducer, applyMiddleware(thunk))
+const sagaMiddleware = createSagaMiddleware()
+const store = createStore(rootReducer, applyMiddleware(thunk, sagaMiddleware))
+sagaMiddleware.run(mySaga)
 
 export type AppState = ReturnType<typeof rootReducer>
 

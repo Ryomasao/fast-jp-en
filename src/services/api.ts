@@ -4,24 +4,24 @@ import MockAdapter from 'axios-mock-adapter'
 const api = axios.create()
 // TODO devモードのときのみにする
 const mock = new MockAdapter(api, { delayResponse: 500 })
-mock.onGet('/wordList').reply(200, {
-  wordList: [
+mock.onGet('/sentences').reply(200, {
+  sentences: [
     {
       id: 1,
       jp: {
-        text: 'hoge',
+        sentense: 'これは猫ですか？',
       },
       en: {
-        text: 'hoge',
+        sentense: 'is this a cat?',
       },
     },
     {
       id: 2,
       jp: {
-        text: 'fuga',
+        sentense: 'fuga',
       },
       en: {
-        text: 'fuga',
+        sentense: 'fuga',
       },
     },
   ],
