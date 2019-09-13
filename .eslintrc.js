@@ -115,5 +115,10 @@ module.exports = {
         useTabs: false,
       },
     ],
+    'import/no-extraneous-dependencies': [
+      'error',
+      // devDependenciesのimportを以下のファイルでは許可する
+      {devDependencies: ['**/*.test.tsx']},
+    ],
   },
 }
