@@ -23,6 +23,10 @@ const WordContainer: React.FC<WordContainerProps> = ({
 }) => {
   useEffect(() => {
     getSentencesStart()
+    // マウント時のみに実行したいので空の配列を指定する
+    // 依存しているpropsを指定しないと、react-hooks/exhaustive-depsでwarningが出る
+    // getSentenceStartは何にも依存していないので、ひとまずdisableにしとく
+    // eslint-disable-next-line
   }, [])
 
   return (
