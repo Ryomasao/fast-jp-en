@@ -3,7 +3,7 @@ import { GET_WORD_LIST_START } from 'store/sentences/const'
 import { fetchWordList } from 'services/word'
 import { getWords } from 'store/sentences/actions'
 
-function* runGetWords(action: any) {
+function* runGetWords() {
   try {
     const api = fetchWordList
     const sentences = yield call(api)

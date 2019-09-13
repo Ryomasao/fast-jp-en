@@ -1,36 +1,35 @@
 import { WordContainer } from 'services/word/model'
-import {
-  UPDATE_STATUS,
-  GET_WORD_LIST_START,
-  GET_WORD_LIST_SUCCESS,
-  GET_WORD_LIST_FAIL,
-} from 'store/sentences/const'
+import * as ActionType from 'store/sentences/const'
 
 // sync
 export const updateStatus = (id: number) => {
   return {
-    type: UPDATE_STATUS,
+    type: ActionType.UPDATE_STATUS as typeof ActionType.UPDATE_STATUS,
     payload: id,
   }
 }
 
 // async
 export const getWords = {
-  start: (params: any) => {
+  start: () => {
     return {
-      type: GET_WORD_LIST_START,
-      payload: params,
+      // typeの型にas typeofとすることで、typeはstring型ではなく、GET_WORD_LIST_STARTという文字列を持つ、専用の型になる
+      // これをすることによりswitch文で、case句に応じてどんなpayloadが来るのかをts側で判断できるようになるみたい。たぶん。
+      // 例えば、payloadが存在しないアクションとかこれがないとpayloadがないってエラーになる
+      type: ActionType.GET_WORD_LIST_START as typeof ActionType.GET_WORD_LIST_START,
     }
   },
-  succeed: (params: any, result: { wordsList: WordContainer[] }) => {
+  // redux-sagaから{params, result}の形式でもらう
+  // paramsいらない場合も定義しなきゃいけないのかしら
+  succeed: (params: any, result: { sentences: WordContainer[] }) => {
     return {
-      type: GET_WORD_LIST_SUCCESS,
+      type: ActionType.GET_WORD_LIST_SUCCESS as typeof ActionType.GET_WORD_LIST_SUCCESS,
       payload: { params, result },
     }
   },
   fail: (params: any, error: any) => {
     return {
-      type: GET_WORD_LIST_FAIL,
+      type: ActionType.GET_WORD_LIST_FAIL as typeof ActionType.GET_WORD_LIST_FAIL,
       payload: { params, error },
       error: true,
     }

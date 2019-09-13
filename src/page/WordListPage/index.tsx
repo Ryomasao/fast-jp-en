@@ -12,7 +12,7 @@ export default connect(
   mapStateToProps,
   // アクションに別名をつけたいので、dispatchを受け取って書く方式にする
   dispatch => ({
-    getSentencesStart: () => dispatch(getWords.start(1)),
+    getSentencesStart: () => dispatch(getWords.start()),
     updateStatus: (id: number) => dispatch(updateStatus(id)),
   }),
   // reduxのヘルパ関数binadActionCratorsを使うと、dispatchを個別に書かなくていい
