@@ -1,8 +1,7 @@
 import React from 'react'
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
-import { WordContainer } from 'services/word/model'
-import { AppState } from '../../store'
+import { WordState, WordContainer } from 'services/word/model'
 import WordCard from './WordCard'
 
 // word[lang]でアクセスしているので、型をただのstringにするとtsエラーになる
@@ -17,7 +16,7 @@ interface WordActions {
   updateStatus: (id: number) => void
 }
 
-type WordCardListProps = AppState & WordActions & OwnProps
+type WordCardListProps = { wordState: WordState } & WordActions & OwnProps
 
 const WordCardList: React.FC<WordCardListProps> = ({
   wordState,
