@@ -5,5 +5,8 @@ window.matchMedia = jest.fn().mockImplementation(query => {
     onchange: null,
     addListener: jest.fn(),
     removeListener: jest.fn(),
-  };
-});
+  }
+})
+
+// isolate moduleを許可してないので、適当にexport
+export {}
