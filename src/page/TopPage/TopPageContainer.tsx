@@ -7,6 +7,7 @@ const TopPageContainer: React.FC = () => (
     <div>TopPage</div>
     <ul>
       <Link to="/sentences">sentences</Link>
+      <Link to="/admin/sentences">add sentences</Link>
     </ul>
   </MainTemplate>
 )

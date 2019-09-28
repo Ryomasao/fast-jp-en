@@ -1,13 +1,7 @@
-import firebase from 'firebase/app'
-import 'firebase/auth'
 import { User } from 'services/auth/model'
-
-const config = {
-  apiKey: 'AIzaSyDaXCwJHwm5h8cKtdPcynoVWmqWzRMj7qs',
-  authDomain: 'fast-jp-en.firebaseapp.com',
-}
-
-firebase.initializeApp(config)
+// このfirebaseは、src/firebase/index.tsを参照しているので注意
+// initialzeした後の状態を使う
+import firebase from '../../firebase'
 
 export const googleLogin = () => {
   const provider = new firebase.auth.GoogleAuthProvider()

@@ -1,4 +1,5 @@
 import { WordContainer } from 'services/word/model'
+import 'firebase/firestore'
 import api from '../api'
 
 interface FetchWordResult {
@@ -10,4 +11,10 @@ export const fetchWordList = async () => {
   const sentences: FetchWordResult = response.data
 
   return sentences
+}
+
+export const createSentence = async () => {
+  const response = await api.post('/sentences/new')
+
+  return response
 }

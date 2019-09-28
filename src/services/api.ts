@@ -1,7 +1,8 @@
 import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 
-const api = axios.create()
+const api = axios.create({})
+
 // TODO devモードのときのみにする
 const mock = new MockAdapter(api, { delayResponse: 500 })
 mock.onGet('/sentences').reply(200, {

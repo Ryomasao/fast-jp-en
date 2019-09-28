@@ -72,3 +72,7 @@ https://github.com/oukayuka/ReactBeginnersBook-2.0/blob/master/11-async/03-saga/
 こっちのほうがシンプルでよさそう。
 
 ## 名称を見直す
+
+## React のイベントの型
+
+https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react/index.d.ts#L485
