@@ -1,6 +1,6 @@
 // import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { updateStatus, getWords } from 'store/sentences/actions'
+import { updateStatus, getSentences } from 'store/sentences/actions'
 import { AppState } from 'store'
 import WordContainer from './WordContainer'
 
@@ -12,7 +12,7 @@ export default connect(
   mapStateToProps,
   // アクションに別名をつけたいので、dispatchを受け取って書く方式にする
   dispatch => ({
-    getSentencesStart: () => dispatch(getWords.start()),
+    getSentencesStart: () => dispatch(getSentences.start()),
     updateStatus: (id: number) => dispatch(updateStatus(id)),
   }),
   // reduxのヘルパ関数binadActionCratorsを使うと、dispatchを個別に書かなくていい

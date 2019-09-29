@@ -1,5 +1,5 @@
 import { WordContainer } from 'services/word/model'
-import 'firebase/firestore'
+import { db } from '../../firebase'
 import api from '../api'
 
 interface FetchWordResult {
@@ -13,8 +13,21 @@ export const fetchWordList = async () => {
   return sentences
 }
 
-export const createSentence = async () => {
-  const response = await api.post('/sentences/new')
+interface FormData {
+  uid: string
+  en: string
+  jp: string
+  note?: string
+}
 
-  return response
+export const createSentence = async (formData: FormData) => {
+  try {
+    const docRef = await db.collection('sentences').add(formData)
+
+    return docRef
+  } catch (e) {
+    // TODO エラーハンドリング
+    console.error(e)
+    throw e
+  }
 }

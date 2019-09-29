@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import createSagaMiddleware from 'redux-saga'
-import mySaga from 'sagas/word'
+import mySaga from 'sagas/sentences'
 import authReducer from 'store/auth/reducer'
 import wordReducer from 'store/sentences/reducer'
 

@@ -10,7 +10,7 @@ export const updateStatus = (id: number) => {
 }
 
 // async
-export const getWords = {
+export const getSentences = {
   start: () => {
     return {
       // typeの型にas typeofとすることで、typeはstring型ではなく、GET_WORD_LIST_STARTという文字列を持つ、専用の型になる
@@ -35,8 +35,38 @@ export const getWords = {
     }
   },
 }
+
+export interface CreateSentenceParams {
+  uid: string
+  en: string
+  jp: string
+  note?: string
+}
+
+export const createSentence = {
+  start: (params: CreateSentenceParams) => {
+    return {
+      type: ActionType.CREATE_SENTENCE_START as typeof ActionType.CREATE_SENTENCE_START,
+      payload: params,
+    }
+  },
+  succeed: () => {
+    return {
+      type: ActionType.CREATE_SENTENCE_SUCCESS as typeof ActionType.CREATE_SENTENCE_SUCCESS,
+    }
+  },
+  fail: () => {
+    return {
+      type: ActionType.CREATE_SENTENCE_FAIL as typeof ActionType.CREATE_SENTENCE_FAIL,
+    }
+  },
+}
+
 export type SentencesAction =
   | ReturnType<typeof updateStatus>
-  | ReturnType<typeof getWords.start>
-  | ReturnType<typeof getWords.succeed>
-  | ReturnType<typeof getWords.fail>
+  | ReturnType<typeof getSentences.start>
+  | ReturnType<typeof getSentences.succeed>
+  | ReturnType<typeof getSentences.fail>
+  | ReturnType<typeof createSentence.start>
+  | ReturnType<typeof createSentence.succeed>
+  | ReturnType<typeof createSentence.fail>
