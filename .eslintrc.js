@@ -120,5 +120,9 @@ module.exports = {
       // devDependenciesのimportを以下のファイルでは許可する
       {devDependencies: ['**/*.test.tsx']},
     ],
+    // labelとinputをforで関連づけなきゃいけないルール
+    // inputがコンポーネントだと設定が煩雑になるので使わない
+    // https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/label-has-associated-control.md
+    'jsx-a11y/label-has-associated-control': 'off',
   },
 }

@@ -10,10 +10,13 @@ const buttonStyle = css({
 interface ButtonProps {
   text?: string
   onClick?: () => void
+  type?: 'submit' | 'button'
 }
 
-const Button: React.FC<ButtonProps> = ({ text, onClick }) => (
-  <button css={buttonStyle} type="button" onClick={onClick}>
+const Button: React.FC<ButtonProps> = ({ text, onClick, type = 'button' }) => (
+  // typeをpropsに指定すると、react/button-has-typeのlint erorがでる
+  // eslint-disable-next-line react/button-has-type
+  <button css={buttonStyle} type={type} onClick={onClick}>
     {text || 'button'}
   </button>
 )
