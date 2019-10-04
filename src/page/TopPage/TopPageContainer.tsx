@@ -2,16 +2,13 @@ import React from 'react'
 import MainTemplate from 'components/template/Main'
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
+import Button from 'components/atoms/Button'
 
 const TopPageContainer: React.FC = () => (
   <MainTemplate>
     <div css={ContainerStyle}>
-      <button css={ButtonStyle} type="button">
-        学ぶ
-      </button>
-      <button css={ButtonStyle} type="button">
-        例文を追加する
-      </button>
+      <Button type="button" text="学ぶ" primary/>
+      <Button type="button" text="追加する" />
     </div>
   </MainTemplate>
 )
@@ -24,20 +21,4 @@ const ContainerStyle = css({
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-})
-
-type ImageProps = {
-  color: string
-}
-
-const ButtonStyle = css({
-  display: 'block',
-  fontSize: '2rem',
-  padding: '1.4rem 2.4rem',
-  width: '50%',
-  margin: '1rem',
-  border: '1px solid transparent',
-  borderRadius: `0.4rem`,
-  backgroundColor: '#FF4641',
-  color: '#fff',
 })
