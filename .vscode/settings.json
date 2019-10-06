@@ -1,6 +1,5 @@
 {
   "css.validate": true,
-  "editor.formatOnSave": true,
   "eslint.autoFixOnSave": true,
   "eslint.enable": true,
   "eslint.validate": [
@@ -21,13 +20,35 @@
       "autoFix": true
     }
   ],
+  //deprecated prettier-eslintを使うようにとのこと
+  // あれ、今の状態って、prettier-eslint使ってないんだっけ
+  // このプロジェクトだと、eslint-plugin-prettierを使ってる
+  // https://qiita.com/ayuareu/items/23d34605b2e9194651f0
+  //"prettier.eslintIntegration": true,
+  //"prettier.stylelintIntegration": true,
+
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
-  "prettier.eslintIntegration": true,
-  "prettier.stylelintIntegration": true,
   "stylelint.enable": true,
   "typescript.tsserver.trace": "verbose",
   "[markdown]": {
     "files.trimTrailingWhitespace": false
+  },
+
+  // eslint.autofixOnSaveで.eslintrc.jsの設定でprettierが走る？
+  // そっちのルールと衝突するのでfalse
+  // ワークスペースの設定で、trueになっている場合を考慮
+  "editor.formatOnSave": false,
+  // 自宅の環境だと、これがないとoptionキーで定義ジャンプができない。
+  "editor.multiCursorModifier": "ctrlCmd",
+  // JavaScriptでのみ保存時フォーマットを有効化
+  "[javascript]": {
+    "editor.formatOnSave": false
+  },
+  "[typescript]": {
+    "editor.formatOnSave": false
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave": false
   }
 }
