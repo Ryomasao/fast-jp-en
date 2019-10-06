@@ -1,17 +1,37 @@
 import React from 'react'
-import MainTemplate from 'components/template/Main'
+import { RouteComponentProps } from 'react-router-dom'
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
+
+import MainTemplate from 'components/template/Main'
 import Button from 'components/atoms/Button'
 
-const TopPageContainer: React.FC = () => (
-  <MainTemplate>
-    <div css={ContainerStyle}>
-      <Button type="button" text="学ぶ" primary/>
-      <Button type="button" text="追加する" />
-    </div>
-  </MainTemplate>
-)
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface TopPageContainerProps extends RouteComponentProps {}
+
+const TopPageContainer: React.FC<TopPageContainerProps> = ({ history }) => {
+  const transitionPage = (url: string) => {
+    history.push(url)
+  }
+
+  return (
+    <MainTemplate>
+      <div css={ContainerStyle}>
+        <Button
+          type="button"
+          text="学ぶ"
+          primary
+          onClick={() => transitionPage('/sentences')}
+        />
+        <Button
+          type="button"
+          text="追加する"
+          onClick={() => transitionPage('/admin/sentences')}
+        />
+      </div>
+    </MainTemplate>
+  )
+}
 
 export default TopPageContainer
 

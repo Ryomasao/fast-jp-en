@@ -3,7 +3,6 @@ import React from 'react'
 import { css, jsx } from '@emotion/core'
 import color from '../../const/palette'
 
-
 interface ButtonProps {
   text?: string
   onClick?: () => void
@@ -12,12 +11,17 @@ interface ButtonProps {
   danger?: boolean
 }
 
-const Button: React.FC<ButtonProps> = ({ text, onClick, type = 'button', primary, danger }) => {
-
+const Button: React.FC<ButtonProps> = ({
+  text,
+  onClick,
+  type = 'button',
+  primary,
+  danger,
+}) => {
   const backgroundColor = primary ? 'blue' : danger ? color.LIGHT_RED : 'black'
 
   const buttonStyle = css({
-    //backgroundColor: Color.LIGHT_GRAYISH_BLUE,
+    // backgroundColor: Color.LIGHT_GRAYISH_BLUE,
     backgroundColor,
     display: 'block',
     fontSize: '2rem',
@@ -30,11 +34,11 @@ const Button: React.FC<ButtonProps> = ({ text, onClick, type = 'button', primary
   })
 
   return (
-  // typeをpropsに指定すると、react/button-has-typeのlint erorがでる
-  // eslint-disable-next-line react/button-has-type
-  <button css={buttonStyle} type={type} onClick={onClick}>
-    {text || 'button'}
-  </button>
+    // typeをpropsに指定すると、react/button-has-typeのlint erorがでる
+    // eslint-disable-next-line react/button-has-type
+    <button css={buttonStyle} type={type} onClick={onClick}>
+      {text || 'button'}
+    </button>
   )
 }
 
