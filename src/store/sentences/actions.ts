@@ -38,9 +38,8 @@ export const getSentences = {
 
 export interface CreateSentenceParams {
   uid: string
-  en: string
-  jp: string
-  note?: string
+  en: { sentence: string; note?: string }
+  jp: { sentence: string; note?: string }
 }
 
 export const createSentence = {
