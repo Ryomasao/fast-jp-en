@@ -20,12 +20,14 @@ const TopPageContainer: React.FC<TopPageContainerProps> = ({ history }) => {
         <Button
           type="button"
           text="学ぶ"
-          primary
+          danger
           onClick={() => transitionPage('/sentences')}
+          css={bitLargeButton}
         />
         <Button
           type="button"
           text="追加する"
+          primary
           onClick={() => transitionPage('/admin/sentences')}
         />
       </div>
@@ -41,4 +43,8 @@ const ContainerStyle = css({
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
+})
+
+const bitLargeButton = css({
+  fontSize: '2.2rem',
 })

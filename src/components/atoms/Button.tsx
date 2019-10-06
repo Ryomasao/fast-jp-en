@@ -1,7 +1,7 @@
 import React from 'react'
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
-import color from '../../const/palette'
+import palette from '../../const/palette'
 
 interface ButtonProps {
   text?: string
@@ -9,6 +9,9 @@ interface ButtonProps {
   type?: 'submit' | 'button'
   primary?: boolean
   danger?: boolean
+  // 使用するコンポーネントで上書きしたい場合
+  // css={objectStyle}で設定すると、そのcssに紐づくclassNameが渡される
+  className?: string
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -17,11 +20,16 @@ const Button: React.FC<ButtonProps> = ({
   type = 'button',
   primary,
   danger,
+  className,
 }) => {
-  const backgroundColor = primary ? 'blue' : danger ? color.LIGHT_RED : 'black'
+  // eslint-disable-next-line no-nested-ternary
+  const backgroundColor = primary
+    ? palette.LIGHT_BLUE
+    : danger
+    ? palette.LIGHT_RED
+    : 'black'
 
   const buttonStyle = css({
-    // backgroundColor: Color.LIGHT_GRAYISH_BLUE,
     backgroundColor,
     display: 'block',
     fontSize: '2rem',
@@ -36,7 +44,12 @@ const Button: React.FC<ButtonProps> = ({
   return (
     // typeをpropsに指定すると、react/button-has-typeのlint erorがでる
     // eslint-disable-next-line react/button-has-type
-    <button css={buttonStyle} type={type} onClick={onClick}>
+    <button
+      css={buttonStyle}
+      type={type}
+      onClick={onClick}
+      className={className}
+    >
       {text || 'button'}
     </button>
   )
