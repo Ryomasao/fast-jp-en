@@ -69,31 +69,19 @@ const RegisterPage: React.FC<RegistPageProps> = ({
       <form onSubmit={handleSubmit}>
         <div>
           <label>英語</label>
-          <TextArea
-            onChange={handleChangeEn}
-            value={values.en.sentence}
-          />
+          <TextArea onChange={handleChangeEn} value={values.en.sentence} />
         </div>
         <div>
           <label>note</label>
-          <TextArea
-            onChange={handleChangeEnNote}
-            value={values.en.note}
-          />
+          <TextArea onChange={handleChangeEnNote} value={values.en.note} />
         </div>
         <div>
           <label>日本語</label>
-          <TextArea
-            onChange={handleChangeJp}
-            value={values.jp.sentence}
-          />
+          <TextArea onChange={handleChangeJp} value={values.jp.sentence} />
         </div>
         <div>
           <label>メモ</label>
-          <TextArea
-            onChange={handleChangeJpNote}
-            value={values.jp.note}
-          />
+          <TextArea onChange={handleChangeJpNote} value={values.jp.note} />
         </div>
         <Button text="登録する" type="submit" />
       </form>

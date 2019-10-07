@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import configuredStore from './store'
 // react-routerとreact-router-domってどっち使えばいいんだっけ？
 // →rect-router-domがreact-routerを含んでる
-import AppRouter from './AppRoute'
+import AppRouter from './route'
 
 // SPAであれば、storeは共通で持つのでProviderはここにあってもいいと思う
 // MPAであれば、Page配下のindex.tsでstoreをつくればいいかな
