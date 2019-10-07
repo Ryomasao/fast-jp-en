@@ -33,14 +33,34 @@ const RegisterPage: React.FC<RegistPageProps> = ({
     createSentence({ ...values, uid: authState.uid })
   }
 
+  // 1項目に1handlerは結構しんどい(単純でわかりやすいという考え方もある)
+
+  // name属性を使って汎用化するのは基本的なパターン
+  // const { name, value } = e.target.name
+  // newState = {...oldState, [name]: value }
+
+  // とはいえ今回のようにデータ構造がオブジェクトでネストされていると
+  // 上記のパターンを使うのに工夫が必要になる。
+  // ex) name属性をピリオドで階層を表すとか。 en.sentence
+  // これをやるならformik使おうって感じかな。
   const handleChangeEn = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const { value, name } = e.target
+    const { value } = e.target
     setValues({ ...values, en: { ...values.en, sentence: value } })
   }
 
+  const handleChangeEnNote = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const { value } = e.target
+    setValues({ ...values, en: { ...values.en, note: value } })
+  }
+
   const handleChangeJp = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const { value, name } = e.target
-    setValues({ ...values, jp: { ...values.en, sentence: value } })
+    const { value } = e.target
+    setValues({ ...values, jp: { ...values.jp, sentence: value } })
+  }
+
+  const handleChangeJpNote = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const { value } = e.target
+    setValues({ ...values, jp: { ...values.jp, note: value } })
   }
 
   return (
@@ -52,7 +72,13 @@ const RegisterPage: React.FC<RegistPageProps> = ({
           <TextArea
             onChange={handleChangeEn}
             value={values.en.sentence}
-            name="en"
+          />
+        </div>
+        <div>
+          <label>note</label>
+          <TextArea
+            onChange={handleChangeEnNote}
+            value={values.en.note}
           />
         </div>
         <div>
@@ -60,15 +86,13 @@ const RegisterPage: React.FC<RegistPageProps> = ({
           <TextArea
             onChange={handleChangeJp}
             value={values.jp.sentence}
-            name="jp"
           />
         </div>
         <div>
-          <label>note</label>
+          <label>メモ</label>
           <TextArea
-            onChange={handleChangeEn}
-            value={values.en.note}
-            name="note"
+            onChange={handleChangeJpNote}
+            value={values.jp.note}
           />
         </div>
         <Button text="登録する" type="submit" />

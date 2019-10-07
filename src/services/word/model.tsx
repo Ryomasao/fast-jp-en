@@ -10,5 +10,6 @@ export interface WordContainer {
 }
 
 export interface Word {
-  sentense: string
+  sentence: string
+  note: string
 }

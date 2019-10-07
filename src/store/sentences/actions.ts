@@ -45,17 +45,20 @@ export interface CreateSentenceParams {
 export const createSentence = {
   start: (params: CreateSentenceParams) => {
     return {
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
       type: ActionType.CREATE_SENTENCE_START as typeof ActionType.CREATE_SENTENCE_START,
       payload: params,
     }
   },
   succeed: () => {
     return {
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
       type: ActionType.CREATE_SENTENCE_SUCCESS as typeof ActionType.CREATE_SENTENCE_SUCCESS,
     }
   },
   fail: () => {
     return {
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
       type: ActionType.CREATE_SENTENCE_FAIL as typeof ActionType.CREATE_SENTENCE_FAIL,
     }
   },

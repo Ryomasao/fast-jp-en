@@ -10,7 +10,7 @@ export const fetchWordList = async () => {
   try {
     const querySnapshot = await db
       .collection('sentences')
-      .where('uid', '==', 'myE8deDYglTZYIY205GQvU3BzcQ2')
+      .where('uid', '==', '1xtLm7lVQSck1V2xu97ujQsIPPE3')
       .get()
 
     // querySnapshot.forEach(doc => {
