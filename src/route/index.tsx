@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import TopPage from 'page/TopPage'
 import WordListPage from 'page/WordListPage'
 import RegisterPgae from 'page/RegisterPage'
+import LoginPage from 'page/LoginPage'
+import GuestRouter from './GuestRouter'
 import AuthenticatedRouter from './AuthenticatedRouter'
 
 // 毎回忘れる
@@ -12,12 +14,13 @@ export default () => (
   <Router>
     <Switch>
       <Route exact path="/" component={TopPage} />
-      <Route exact path="/sentences" component={WordListPage} />
+      <AuthenticatedRouter exact path="/sentences" component={WordListPage} />
       <AuthenticatedRouter
         exact
         path="/admin/sentences"
         component={RegisterPgae}
       />
+      <GuestRouter exact path="/login" component={LoginPage} />
     </Switch>
   </Router>
 )

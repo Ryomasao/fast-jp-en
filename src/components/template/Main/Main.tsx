@@ -1,21 +1,39 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 /** @jsx jsx */
 import { css, jsx, Global } from '@emotion/core'
-import { Color } from '../../const'
-import Header from '../organisms/Header'
-import Footer from '../organisms/Footer'
+import LoadingModal from 'components/organisms/LoadingModal'
+import Header from 'components/organisms/Header'
+import Footer from 'components/organisms/Footer'
+import { Color } from 'const'
+import { AuthState, User, UserStatus } from 'services/auth/model'
+import { fireBaseAuthObserver } from 'services/auth'
 
 interface MainProps {
   className?: string
+  signIn: (user: User) => void
+  signOut: () => void
+  authState: AuthState
 }
 
-const Main: React.FC<MainProps> = ({ className, children }) => {
+const Main: React.FC<MainProps> = ({ className, children,
+  signIn,
+  signOut,
+  authState,
+}) => {
+
+  useEffect(() => {
+    fireBaseAuthObserver(signIn, signOut)
+    // eslint-disable-next-line
+  }, [])
+
   return (
-    <div className={className}>
+    <div className={className} css={css({ position: 'relative' })}>
       <Global styles={globalStyle} />
       <Header css={headerStyle} />
       <main css={mainStyle}>{children}</main>
       <Footer css={footerStyle} />
+      {/** 認証状態を取得中のモーダル */}
+      <LoadingModal isShow={authState.userStatus === UserStatus.unknown}/>
     </div>
   )
 }
