@@ -30,6 +30,10 @@ const Header: React.FC<HeaderProps> = ({
       {userStatus === UserStatus.authenticated && (
         <Button text="Logout" onClick={() => logout()} />
       )}
+
+      {userStatus === UserStatus.guest && (
+        <Button text="you need login" onClick={() => {}} />
+      )}
     </header>
   )
 }
