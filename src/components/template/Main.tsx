@@ -25,6 +25,7 @@ const Main: React.FC<MainProps> = ({
   authState,
   history,
   location,
+  signOut,
 }) => {
   const [showSideMenu, handleShowSideMenu] = useState(false)
 
@@ -47,7 +48,8 @@ const Main: React.FC<MainProps> = ({
         isShow={showSideMenu}
         closeSideMenu={() => handleShowSideMenu(false)}
         authState={authState}
-        signOut={() => {}}
+        signOut={signOut}
+        history={history}
       />
     </div>
   )
