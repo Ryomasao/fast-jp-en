@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { RouteComponentProps } from 'react-router-dom'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -14,12 +15,13 @@ interface WordActions {
   updateStatus: (id: number) => void
 }
 
-type WordContainerProps = AppState & WordActions
+type WordContainerProps = AppState & WordActions & RouteComponentProps
 
 const WordContainer: React.FC<WordContainerProps> = ({
   wordState,
   getSentencesStart,
   updateStatus,
+  history,
 }) => {
   useEffect(() => {
     getSentencesStart()
@@ -30,7 +32,7 @@ const WordContainer: React.FC<WordContainerProps> = ({
   }, [])
 
   return (
-    <MainTemplate>
+    <MainTemplate history={history}>
       <Slider
         // スライド両脇のボタンは非表示
         arrows={false}

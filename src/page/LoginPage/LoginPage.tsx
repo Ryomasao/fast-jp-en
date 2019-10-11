@@ -1,12 +1,16 @@
 import React from 'react'
+import { RouteComponentProps } from 'react-router-dom'
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 import MainTemplate from 'components/template/Main'
 import Button from 'components/atoms/Button'
 import { googleLogin } from 'services/auth'
 
-const LoginPage: React.FC = () => (
-  <MainTemplate>
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface LoginPageProps extends RouteComponentProps {}
+
+const LoginPage: React.FC<LoginPageProps> = ({ history }) => (
+  <MainTemplate history={history}>
     <div css={ContainerStyle}>
       <Button text="Google" danger onClick={() => googleLogin()} />
     </div>

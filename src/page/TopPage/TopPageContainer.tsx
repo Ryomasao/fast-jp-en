@@ -15,7 +15,7 @@ const TopPageContainer: React.FC<TopPageContainerProps> = ({ history }) => {
   }
 
   return (
-    <MainTemplate>
+    <MainTemplate history={history}>
       <div css={ContainerStyle}>
         <Button
           type="button"

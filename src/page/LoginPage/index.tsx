@@ -1,8 +1,8 @@
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
-import LoginPage from './LoginPage'
 import { createSentence, CreateSentenceParams } from 'store/sentences/actions'
 import { AppState } from 'store'
+import LoginPage from './LoginPage'
 
 const mapStateToProps = (state: AppState) => {
   return state

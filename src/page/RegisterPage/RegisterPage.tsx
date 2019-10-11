@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
+import { RouteComponentProps } from 'react-router-dom'
 import MainTemplate from 'components/template/Main'
 import TextArea from 'components/atoms/TextArea'
 import Button from 'components/atoms/Button'
 import { CreateSentenceParams } from 'store/sentences/actions'
 import { AuthState } from 'services/auth/model'
 
-interface RegistPageProps {
+interface RegistPageProps extends RouteComponentProps {
   createSentence: (params: CreateSentenceParams) => void
   authState: AuthState
 }
@@ -25,6 +26,7 @@ const initialState = {
 const RegisterPage: React.FC<RegistPageProps> = ({
   createSentence,
   authState,
+  history,
 }) => {
   const [values, setValues] = useState(initialState)
 
@@ -64,7 +66,7 @@ const RegisterPage: React.FC<RegistPageProps> = ({
   }
 
   return (
-    <MainTemplate>
+    <MainTemplate history={history}>
       <div>Register</div>
       <form onSubmit={handleSubmit}>
         <div>

@@ -1,5 +1,7 @@
 import React from 'react'
 /** @jsx jsx */
+// eslint-disable-next-line import/no-extraneous-dependencies
+import * as H from 'history'
 import { css, jsx } from '@emotion/core'
 import Button from 'components/atoms/Button'
 import { Color } from 'const'
@@ -9,6 +11,7 @@ import { AuthState, UserStatus } from 'services/auth/model'
 interface HeaderProps {
   className?: string
   authState: AuthState
+  history?: H.History
 }
 
 const headerStyle = css({
@@ -16,15 +19,9 @@ const headerStyle = css({
   backgroundColor: Color.BACKGROUND_HEADER,
 })
 
-const Header: React.FC<HeaderProps> = ({
-  className,
-  authState,
-}) => {
-
+const Header: React.FC<HeaderProps> = ({ className, authState }) => {
   const { userStatus } = authState
 
-  // 親コンポーネントからもらう値でスタイルを書きたい
-  // functionの中に書いてもパフォーマンス的に問題ないのかな？
   return (
     <header css={headerStyle} className={className}>
       {userStatus === UserStatus.authenticated && (
@@ -32,7 +29,7 @@ const Header: React.FC<HeaderProps> = ({
       )}
 
       {userStatus === UserStatus.guest && (
-        <Button text="you need login" onClick={() => {}} />
+        <Button text="login" onClick={() => {}} />
       )}
     </header>
   )
