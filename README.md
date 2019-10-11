@@ -76,3 +76,12 @@ https://github.com/oukayuka/ReactBeginnersBook-2.0/blob/master/11-async/03-saga/
 ## React のイベントの型
 
 https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react/index.d.ts#L485
+
+
+## deploy
+`firebase-tools`をグローバルに追加済。
+`/usr/local/bin/firebase`が存在しており、そっちを見てしまっていたので、削除した。
+
+```
+
+```
