@@ -17,8 +17,6 @@ interface MainProps {
   location: H.Location
 }
 
-// うーん、テンプレートはcontainer(page)の粒度で扱ったほうがよい気がしてきた
-// Headerにボタンを表示させるとかのロジックをHeaderの中に持たせるのはちょっと違う気がする
 const Main: React.FC<MainProps> = ({
   className,
   children,

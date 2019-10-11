@@ -16,11 +16,26 @@ interface HeaderProps {
   location: H.Location
 }
 
-const Header: React.FC<HeaderProps> = ({ className, authState, history }) => {
+// うーん、テンプレートはcontainer(page)の粒度で扱ったほうがよい気がしてきた
+const Header: React.FC<HeaderProps> = ({
+  className,
+  authState,
+  history,
+  location,
+}) => {
+  // Headerにボタンを表示させるとかのロジックをHeaderの中に持たせるのはちょっと違う気がする
   const { userStatus, photoURL } = authState
+  const { pathname } = location
 
   const transitionPage = (url: string) => {
     history.push(url)
+  }
+
+  const showLoginButton = () => {
+    if (pathname === '/login') return false
+    if (userStatus !== UserStatus.guest) return false
+
+    return true
   }
 
   return (
@@ -32,7 +47,7 @@ const Header: React.FC<HeaderProps> = ({ className, authState, history }) => {
         </div>
       )}
 
-      {userStatus === UserStatus.guest && (
+      {showLoginButton() && (
         <Button
           size="sm"
           primary
