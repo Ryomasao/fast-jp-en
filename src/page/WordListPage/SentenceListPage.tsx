@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { RouteComponentProps } from 'react-router-dom'
-import { AppState } from 'store'
+import { AuthState } from 'services/auth/model'
+import { WordState } from 'services/word/model'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -14,15 +15,19 @@ import WordCardList from './WordCardList'
 interface WordPageProps extends RouteComponentProps {
   getSentencesStart: () => void
   updateStatus: (id: number) => void
-  state: AppState
+  authState: AuthState
+  wordState: WordState
+  signOut: () => {}
 }
 
 const WordContainer: React.FC<WordPageProps> = ({
-  state,
+  authState,
+  wordState,
   getSentencesStart,
   updateStatus,
   history,
   location,
+  signOut,
 }) => {
   useEffect(() => {
     getSentencesStart()
@@ -34,9 +39,10 @@ const WordContainer: React.FC<WordPageProps> = ({
 
   return (
     <MainTemplate
-      authState={state.authState}
+      authState={authState}
       history={history}
       location={location}
+      signOut={signOut}
     >
       <Slider
         // スライド両脇のボタンは非表示
@@ -46,12 +52,12 @@ const WordContainer: React.FC<WordPageProps> = ({
       >
         <WordCardList
           lang="jp"
-          wordState={state.wordState}
+          wordState={wordState}
           updateStatus={updateStatus}
         />
         <WordCardList
           lang="en"
-          wordState={state.wordState}
+          wordState={wordState}
           updateStatus={updateStatus}
         />
       </Slider>

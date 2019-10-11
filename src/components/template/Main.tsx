@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 /** @jsx jsx */
 import { css, jsx, Global } from '@emotion/core'
 // 型定義
@@ -6,6 +6,7 @@ import { css, jsx, Global } from '@emotion/core'
 import * as H from 'history'
 import LoadingModal from 'components/organisms/LoadingModal'
 import Header from 'components/organisms/Header'
+import SideMenu from 'components/organisms/SideMenu'
 import Footer from 'components/organisms/Footer'
 import { Color } from 'const'
 import { AuthState, UserStatus } from 'services/auth/model'
@@ -15,6 +16,7 @@ interface MainProps {
   authState: AuthState
   history: H.History
   location: H.Location
+  signOut: () => void
 }
 
 const Main: React.FC<MainProps> = ({
@@ -24,14 +26,29 @@ const Main: React.FC<MainProps> = ({
   history,
   location,
 }) => {
+  const [showSideMenu, handleShowSideMenu] = useState(false)
+
   return (
     <div className={className} css={css({ position: 'relative' })}>
       <Global styles={globalStyle} />
-      <Header css={headerStyle} history={history} location={location} />
+      <Header
+        css={headerStyle}
+        history={history}
+        location={location}
+        handleShowSideMenu={() =>
+          handleShowSideMenu(showSideMenu => !showSideMenu)
+        }
+      />
       <main css={mainStyle}>{children}</main>
       <Footer css={footerStyle} />
       {/** 認証状態を取得中のモーダル */}
       <LoadingModal isShow={authState.userStatus === UserStatus.unknown} />
+      <SideMenu
+        isShow={showSideMenu}
+        closeSideMenu={() => handleShowSideMenu(false)}
+        authState={authState}
+        signOut={() => {}}
+      />
     </div>
   )
 }

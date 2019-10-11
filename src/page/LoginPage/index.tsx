@@ -1,6 +1,7 @@
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
-import { createSentence, CreateSentenceParams } from 'store/sentences/actions'
+import { signIn, signOut } from 'store/auth/actions'
+import { User } from 'services/auth/model'
 import { AppState } from 'store'
 import LoginPage from './LoginPage'
 
@@ -10,8 +11,8 @@ const mapStateToProps = (state: AppState) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    createSentence: (params: CreateSentenceParams) =>
-      dispatch(createSentence.start(params)),
+    signIn: (user: User) => dispatch(signIn(user)),
+    signOut: () => dispatch(signOut()),
   }
 }
 

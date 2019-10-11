@@ -10,29 +10,38 @@ import { googleLogin } from 'services/auth'
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface LoginPageProps extends RouteComponentProps {
   authState: AuthState
+  signOut: () => void
 }
 
 const LoginPage: React.FC<LoginPageProps> = ({
   authState,
   history,
   location,
-}) => (
-  <MainTemplate authState={authState} history={history} location={location}>
-    <div css={ContainerStyle}>
-      <p css={{ fontSize: '2rem', marginTop: '10px' }}>ログイン方法を選択</p>
-      <div
-        css={{
-          width: '100%',
-          display: 'flex',
-          justifyContent: 'center',
-          margin: '10px',
-        }}
-      >
-        <Button text="Google" danger onClick={() => googleLogin()} />
+  signOut,
+}) => {
+  return (
+    <MainTemplate
+      authState={authState}
+      history={history}
+      location={location}
+      signOut={signOut}
+    >
+      <div css={ContainerStyle}>
+        <p css={{ fontSize: '2rem', marginTop: '10px' }}>ログイン方法を選択</p>
+        <div
+          css={{
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'center',
+            margin: '10px',
+          }}
+        >
+          <Button text="Google" danger onClick={() => googleLogin()} />
+        </div>
       </div>
-    </div>
-  </MainTemplate>
-)
+    </MainTemplate>
+  )
+}
 
 export default LoginPage
 

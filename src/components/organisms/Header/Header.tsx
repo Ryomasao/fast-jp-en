@@ -6,7 +6,6 @@ import { css, jsx } from '@emotion/core'
 import Button from 'components/atoms/Button'
 import CircleImage from 'components/atoms/CircleImage'
 import { Color } from 'const'
-import { logout } from 'services/auth'
 import { AuthState, UserStatus } from 'services/auth/model'
 
 interface HeaderProps {
@@ -14,6 +13,7 @@ interface HeaderProps {
   authState: AuthState
   history: H.History
   location: H.Location
+  handleShowSideMenu: () => void
 }
 
 // うーん、テンプレートはcontainer(page)の粒度で扱ったほうがよい気がしてきた
@@ -22,6 +22,7 @@ const Header: React.FC<HeaderProps> = ({
   authState,
   history,
   location,
+  handleShowSideMenu,
 }) => {
   // Headerにボタンを表示させるとかのロジックをHeaderの中に持たせるのはちょっと違う気がする
   const { userStatus, photoURL } = authState
@@ -41,9 +42,8 @@ const Header: React.FC<HeaderProps> = ({
   return (
     <header css={headerStyle} className={className}>
       {userStatus === UserStatus.authenticated && (
-        <div css={{ width: '100%' }}>
+        <div css={{ width: '100%' }} onClick={handleShowSideMenu}>
           <CircleImage url={photoURL} />
-          <Button text="Logout" onClick={() => logout()} />
         </div>
       )}
 

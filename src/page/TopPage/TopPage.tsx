@@ -10,19 +10,26 @@ import Button from 'components/atoms/Button'
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface TopPageContainerProps extends RouteComponentProps {
   authState: AuthState
+  signOut: () => {}
 }
 
 const TopPage: React.FC<TopPageContainerProps> = ({
   authState,
   history,
   location,
+  signOut,
 }) => {
   const transitionPage = (url: string) => {
     history.push(url)
   }
 
   return (
-    <MainTemplate authState={authState} history={history} location={location}>
+    <MainTemplate
+      authState={authState}
+      history={history}
+      location={location}
+      signOut={signOut}
+    >
       <div css={ContainerStyle}>
         <Button
           type="button"

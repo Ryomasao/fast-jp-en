@@ -11,7 +11,7 @@ interface PageProps {
   signOut: () => void
 }
 
-const BasePage: React.FC<PageProps> = ({ signIn, signOut }) => {
+const App: React.FC<PageProps> = ({ signIn, signOut }) => {
   useEffect(() => {
     fireBaseAuthObserver(signIn, signOut)
     // eslint-disable-next-line
@@ -28,4 +28,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 export default connect(
   null,
   mapDispatchToProps,
-)(BasePage)
+)(App)
