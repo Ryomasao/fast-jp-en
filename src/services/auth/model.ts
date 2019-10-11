@@ -4,8 +4,10 @@ export enum UserStatus {
   authenticated,
 }
 
+// firebase.Userをそのまま使った方がいいのかな？
 export interface User {
   uid: string
+  photoURL: string | null
 }
 
 export interface AuthState extends User {

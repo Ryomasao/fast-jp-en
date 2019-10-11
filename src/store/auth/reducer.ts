@@ -5,6 +5,7 @@ import { AuthAction } from 'store/auth/actions'
 const initialState: AuthState = {
   uid: '',
   userStatus: UserStatus.unknown,
+  photoURL: '',
 }
 
 export default (state = initialState, action: AuthAction) => {
@@ -13,6 +14,7 @@ export default (state = initialState, action: AuthAction) => {
       return {
         ...state,
         uid: action.payload.uid,
+        photoURL: action.payload.photoURL,
         userStatus: UserStatus.authenticated,
       }
     case ActionType.SIGN_OUT:

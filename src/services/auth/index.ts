@@ -1,6 +1,6 @@
 import { User } from 'services/auth/model'
 // このfirebaseは、src/firebase/index.tsを参照しているので注意
-// initialzeした後の状態を使う
+// initialzeした後の状態を使うため
 import firebase from '../../firebase'
 
 export const googleLogin = () => {

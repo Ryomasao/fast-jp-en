@@ -12,13 +12,17 @@ interface TopPageContainerProps extends RouteComponentProps {
   authState: AuthState
 }
 
-const TopPage: React.FC<TopPageContainerProps> = ({ authState, history }) => {
+const TopPage: React.FC<TopPageContainerProps> = ({
+  authState,
+  history,
+  location,
+}) => {
   const transitionPage = (url: string) => {
     history.push(url)
   }
 
   return (
-    <MainTemplate authState={authState} history={history}>
+    <MainTemplate authState={authState} history={history} location={location}>
       <div css={ContainerStyle}>
         <Button
           type="button"

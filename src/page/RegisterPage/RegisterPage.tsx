@@ -27,6 +27,7 @@ const RegisterPage: React.FC<RegistPageProps> = ({
   createSentence,
   authState,
   history,
+  location,
 }) => {
   const [values, setValues] = useState(initialState)
 
@@ -66,7 +67,7 @@ const RegisterPage: React.FC<RegistPageProps> = ({
   }
 
   return (
-    <MainTemplate authState={authState} history={history}>
+    <MainTemplate authState={authState} history={history} location={location}>
       <div>Register</div>
       <form onSubmit={handleSubmit}>
         <div>

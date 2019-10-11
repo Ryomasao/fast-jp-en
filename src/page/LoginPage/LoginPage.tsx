@@ -12,10 +12,24 @@ interface LoginPageProps extends RouteComponentProps {
   authState: AuthState
 }
 
-const LoginPage: React.FC<LoginPageProps> = ({ authState, history }) => (
-  <MainTemplate authState={authState} history={history}>
+const LoginPage: React.FC<LoginPageProps> = ({
+  authState,
+  history,
+  location,
+}) => (
+  <MainTemplate authState={authState} history={history} location={location}>
     <div css={ContainerStyle}>
-      <Button text="Google" danger onClick={() => googleLogin()} />
+      <p css={{ fontSize: '2rem', marginTop: '10px' }}>ログイン方法を選択</p>
+      <div
+        css={{
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          margin: '10px',
+        }}
+      >
+        <Button text="Google" danger onClick={() => googleLogin()} />
+      </div>
     </div>
   </MainTemplate>
 )
@@ -24,7 +38,6 @@ export default LoginPage
 
 const ContainerStyle = css({
   display: 'flex',
-  height: '100%',
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',

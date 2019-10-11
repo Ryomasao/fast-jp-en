@@ -22,6 +22,7 @@ const WordContainer: React.FC<WordPageProps> = ({
   getSentencesStart,
   updateStatus,
   history,
+  location,
 }) => {
   useEffect(() => {
     getSentencesStart()
@@ -32,7 +33,11 @@ const WordContainer: React.FC<WordPageProps> = ({
   }, [])
 
   return (
-    <MainTemplate authState={state.authState} history={history}>
+    <MainTemplate
+      authState={state.authState}
+      history={history}
+      location={location}
+    >
       <Slider
         // スライド両脇のボタンは非表示
         arrows={false}
