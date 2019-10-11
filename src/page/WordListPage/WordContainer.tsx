@@ -1,24 +1,24 @@
 import React, { useEffect } from 'react'
 import { RouteComponentProps } from 'react-router-dom'
+import { AppState } from 'store'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
 import MainTemplate from 'components/template/Main'
-import { AppState } from 'store'
 import WordCardList from './WordCardList'
 
 // Reduxから注入されるprops + αはこんな感じに書くといいみたい
 // type HogeProps = OwnProps & HogeState & HogeActions;
-interface WordActions {
+
+interface WordPageProps extends RouteComponentProps {
   getSentencesStart: () => void
   updateStatus: (id: number) => void
+  state: AppState
 }
 
-type WordContainerProps = AppState & WordActions & RouteComponentProps
-
-const WordContainer: React.FC<WordContainerProps> = ({
-  wordState,
+const WordContainer: React.FC<WordPageProps> = ({
+  state,
   getSentencesStart,
   updateStatus,
   history,
@@ -32,7 +32,7 @@ const WordContainer: React.FC<WordContainerProps> = ({
   }, [])
 
   return (
-    <MainTemplate history={history}>
+    <MainTemplate authState={state.authState} history={history}>
       <Slider
         // スライド両脇のボタンは非表示
         arrows={false}
@@ -41,12 +41,12 @@ const WordContainer: React.FC<WordContainerProps> = ({
       >
         <WordCardList
           lang="jp"
-          wordState={wordState}
+          wordState={state.wordState}
           updateStatus={updateStatus}
         />
         <WordCardList
           lang="en"
-          wordState={wordState}
+          wordState={state.wordState}
           updateStatus={updateStatus}
         />
       </Slider>

@@ -66,7 +66,7 @@ const RegisterPage: React.FC<RegistPageProps> = ({
   }
 
   return (
-    <MainTemplate history={history}>
+    <MainTemplate authState={authState} history={history}>
       <div>Register</div>
       <form onSubmit={handleSubmit}>
         <div>

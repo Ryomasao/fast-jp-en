@@ -11,7 +11,7 @@ import { AuthState, UserStatus } from 'services/auth/model'
 interface HeaderProps {
   className?: string
   authState: AuthState
-  history?: H.History
+  history: H.History
 }
 
 const headerStyle = css({
@@ -19,8 +19,12 @@ const headerStyle = css({
   backgroundColor: Color.BACKGROUND_HEADER,
 })
 
-const Header: React.FC<HeaderProps> = ({ className, authState }) => {
+const Header: React.FC<HeaderProps> = ({ className, authState, history }) => {
   const { userStatus } = authState
+
+  const transitionPage = (url: string) => {
+    history.push(url)
+  }
 
   return (
     <header css={headerStyle} className={className}>
@@ -29,7 +33,7 @@ const Header: React.FC<HeaderProps> = ({ className, authState }) => {
       )}
 
       {userStatus === UserStatus.guest && (
-        <Button text="login" onClick={() => {}} />
+        <Button text="login" onClick={() => transitionPage('/login')} />
       )}
     </header>
   )

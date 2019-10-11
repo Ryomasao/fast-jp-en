@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 /** @jsx jsx */
 import { css, jsx, Global } from '@emotion/core'
 // 型定義
@@ -8,13 +8,10 @@ import LoadingModal from 'components/organisms/LoadingModal'
 import Header from 'components/organisms/Header'
 import Footer from 'components/organisms/Footer'
 import { Color } from 'const'
-import { AuthState, User, UserStatus } from 'services/auth/model'
-import { fireBaseAuthObserver } from 'services/auth'
+import { AuthState, UserStatus } from 'services/auth/model'
 
 interface MainProps {
   className?: string
-  signIn: (user: User) => void
-  signOut: () => void
   authState: AuthState
   history: H.History
 }
@@ -22,16 +19,9 @@ interface MainProps {
 const Main: React.FC<MainProps> = ({
   className,
   children,
-  signIn,
-  signOut,
   authState,
   history,
 }) => {
-  useEffect(() => {
-    fireBaseAuthObserver(signIn, signOut)
-    // eslint-disable-next-line
-  }, [])
-
   return (
     <div className={className} css={css({ position: 'relative' })}>
       <Global styles={globalStyle} />
