@@ -42,8 +42,6 @@ const Main: React.FC<MainProps> = ({
       />
       <main css={mainStyle}>{children}</main>
       <Footer css={footerStyle} />
-      {/** 認証状態を取得中のモーダル */}
-      <LoadingModal isShow={authState.userStatus === UserStatus.unknown} />
       <SideMenu
         isShow={showSideMenu}
         closeSideMenu={() => handleShowSideMenu(false)}
