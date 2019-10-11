@@ -2,7 +2,7 @@
 import { connect } from 'react-redux'
 import { updateStatus, getSentences } from 'store/sentences/actions'
 import { AppState } from 'store'
-import WordContainer from './WordContainer'
+import SentenceListPage from './SentenceListPage'
 
 const mapStateToProps = (state: AppState) => {
   return state
@@ -26,4 +26,4 @@ export default connect(
   //  ),
   // actionsとかにまとめたいときは
   // {actions: bindActionCreator()} or {actions: {hoge: () => dipatch(hoge())}}
-)(WordContainer)
+)(SentenceListPage)
