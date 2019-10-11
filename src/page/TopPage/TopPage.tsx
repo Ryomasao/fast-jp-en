@@ -1,5 +1,6 @@
 import React from 'react'
 import { RouteComponentProps } from 'react-router-dom'
+import { AuthState } from 'services/auth/model'
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 
@@ -7,15 +8,28 @@ import MainTemplate from 'components/template/Main'
 import Button from 'components/atoms/Button'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface TopPageContainerProps extends RouteComponentProps {}
+interface TopPageContainerProps extends RouteComponentProps {
+  authState: AuthState
+  signOut: () => {}
+}
 
-const TopPageContainer: React.FC<TopPageContainerProps> = ({ history }) => {
+const TopPage: React.FC<TopPageContainerProps> = ({
+  authState,
+  history,
+  location,
+  signOut,
+}) => {
   const transitionPage = (url: string) => {
     history.push(url)
   }
 
   return (
-    <MainTemplate>
+    <MainTemplate
+      authState={authState}
+      history={history}
+      location={location}
+      signOut={signOut}
+    >
       <div css={ContainerStyle}>
         <Button
           type="button"
@@ -35,7 +49,7 @@ const TopPageContainer: React.FC<TopPageContainerProps> = ({ history }) => {
   )
 }
 
-export default TopPageContainer
+export default TopPage
 
 const ContainerStyle = css({
   display: 'flex',
