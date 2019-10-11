@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import BasePage from 'page/BasePage'
+import App from 'App'
 import configuredStore from './store'
 // react-routerとreact-router-domってどっち使えばいいんだっけ？
 // →rect-router-domがreact-routerを含んでる
@@ -11,7 +11,7 @@ import configuredStore from './store'
 // MPAであれば、Page配下のindex.tsでstoreをつくればいいかな
 ReactDOM.render(
   <Provider store={configuredStore}>
-    <BasePage />
+    <App />
   </Provider>,
   document.getElementById('root'),
 )
