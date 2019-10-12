@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react'
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 import { Dispatch } from 'redux'
 import { User, AuthState, UserStatus } from 'services/auth/model'
 import { AppState } from 'store'
@@ -22,7 +24,7 @@ const App: React.FC<PageProps> = ({ signIn, signOut, authState }) => {
   }, [])
 
   return authState.userStatus === UserStatus.unknown ? (
-    <LoadingModal isShow />
+    <LoadingModal isShow css={{ top: 0 }} />
   ) : (
     <Router />
   )

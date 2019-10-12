@@ -4,12 +4,11 @@ import { css, jsx, Global } from '@emotion/core'
 // 型定義
 // eslint-disable-next-line import/no-extraneous-dependencies
 import * as H from 'history'
-import LoadingModal from 'components/organisms/LoadingModal'
 import Header from 'components/organisms/Header'
 import SideMenu from 'components/organisms/SideMenu'
 import Footer from 'components/organisms/Footer'
 import { Color } from 'const'
-import { AuthState, UserStatus } from 'services/auth/model'
+import { AuthState } from 'services/auth/model'
 
 interface MainProps {
   className?: string
@@ -22,15 +21,13 @@ interface MainProps {
 const Main: React.FC<MainProps> = ({
   className,
   children,
-  authState,
   history,
   location,
-  signOut,
 }) => {
   const [showSideMenu, handleShowSideMenu] = useState(false)
 
   return (
-    <div className={className} css={css({ position: 'relative' })}>
+    <div className={className} css={{ position: 'relative' }}>
       <Global styles={globalStyle} />
       <Header
         css={headerStyle}
@@ -45,8 +42,6 @@ const Main: React.FC<MainProps> = ({
       <SideMenu
         isShow={showSideMenu}
         closeSideMenu={() => handleShowSideMenu(false)}
-        authState={authState}
-        signOut={signOut}
         history={history}
       />
     </div>
