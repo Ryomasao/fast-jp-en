@@ -17,11 +17,7 @@ const footerStyle = css({
 })
 
 const Footer: React.FC<FooterProps> = ({ className }) => {
-  return (
-    <footer css={footerStyle} className={className}>
-      footer
-    </footer>
-  )
+  return <footer css={footerStyle} className={className}></footer>
 }
 
 export default Footer
