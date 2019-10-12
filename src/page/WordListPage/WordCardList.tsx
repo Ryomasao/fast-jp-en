@@ -27,9 +27,9 @@ const WordCardList: React.FC<WordCardListProps> = ({
     <div css={WordListStyle}>
       {wordState.sentences.map((sentence: WordContainer, index) => (
         <WordCard
-          // NOTE 更新系じゃないのでindexでも問題ない
+          // NOTE ひとまずindexで運用
           key={index}
-          id={sentence.id}
+          id={index}
           text={sentence[lang].sentence}
           status={sentence.status}
           changeStatus={updateStatus}
