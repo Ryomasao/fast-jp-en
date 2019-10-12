@@ -17,7 +17,6 @@ interface WordPageProps extends RouteComponentProps {
   updateStatus: (id: number) => void
   authState: AuthState
   wordState: WordState
-  signOut: () => {}
 }
 
 const WordContainer: React.FC<WordPageProps> = ({
@@ -27,7 +26,6 @@ const WordContainer: React.FC<WordPageProps> = ({
   updateStatus,
   history,
   location,
-  signOut,
 }) => {
   useEffect(() => {
     getSentencesStart()
@@ -38,12 +36,7 @@ const WordContainer: React.FC<WordPageProps> = ({
   }, [])
 
   return (
-    <MainTemplate
-      authState={authState}
-      history={history}
-      location={location}
-      signOut={signOut}
-    >
+    <MainTemplate authState={authState} history={history} location={location}>
       <Slider
         // スライド両脇のボタンは非表示
         arrows={false}

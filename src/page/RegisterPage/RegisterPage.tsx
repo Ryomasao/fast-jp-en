@@ -9,7 +9,6 @@ import { AuthState } from 'services/auth/model'
 interface RegistPageProps extends RouteComponentProps {
   createSentence: (params: CreateSentenceParams) => void
   authState: AuthState
-  signOut: () => {}
 }
 
 const initialState = {
@@ -29,7 +28,6 @@ const RegisterPage: React.FC<RegistPageProps> = ({
   authState,
   history,
   location,
-  signOut,
 }) => {
   const [values, setValues] = useState(initialState)
 
@@ -69,12 +67,7 @@ const RegisterPage: React.FC<RegistPageProps> = ({
   }
 
   return (
-    <MainTemplate
-      authState={authState}
-      history={history}
-      location={location}
-      signOut={signOut}
-    >
+    <MainTemplate authState={authState} history={history} location={location}>
       <div>Register</div>
       <form onSubmit={handleSubmit}>
         <div>

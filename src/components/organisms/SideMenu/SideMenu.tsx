@@ -4,24 +4,23 @@ import { jsx } from '@emotion/core'
 // 型定義
 // eslint-disable-next-line import/no-extraneous-dependencies
 import * as H from 'history'
-import { AuthState } from 'services/auth/model'
 import Overlay from 'components/molecule/Overlay'
 import OutsideClickHandler from 'react-outside-click-handler'
 import { logout } from 'services/auth'
 
-interface SideMenuProps {
+interface OwnProps {
   isShow: boolean
   closeSideMenu: () => void
-  authState: AuthState
-  signOut: () => void
   history: H.History
 }
 
-const SideMenu: React.FC<SideMenuProps> = ({
-  isShow,
-  closeSideMenu,
-  signOut,
-}) => {
+interface DispatchProps {
+  signOut: () => void
+}
+
+type Props = OwnProps & DispatchProps
+
+const SideMenu: React.FC<Props> = ({ isShow, closeSideMenu, signOut }) => {
   const left = isShow ? '0' : '-250px'
 
   return (

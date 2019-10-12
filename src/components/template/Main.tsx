@@ -15,7 +15,6 @@ interface MainProps {
   authState: AuthState
   history: H.History
   location: H.Location
-  signOut: () => void
 }
 
 const Main: React.FC<MainProps> = ({
