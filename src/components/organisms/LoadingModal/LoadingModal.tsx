@@ -6,9 +6,10 @@ import Overlay from 'components/molecule/Overlay'
 
 interface LoadingModalProps {
   isShow: boolean
+  className?: string
 }
 
-const LoadingModal: React.FC<LoadingModalProps> = ({ isShow }) => {
+const LoadingModal: React.FC<LoadingModalProps> = ({ isShow, className }) => {
   if (!isShow) return null
 
   return (
@@ -20,6 +21,7 @@ const LoadingModal: React.FC<LoadingModalProps> = ({ isShow }) => {
         justifyContent: 'center',
         alignItems: 'center',
       }}
+      className={className}
     >
       <div>
         {/* loadingは常にtrue */}
