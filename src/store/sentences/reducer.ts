@@ -16,8 +16,8 @@ export default (state = initialState, action: SentencesAction) => {
     }
     case ActionType.UPDATE_STATUS: {
       /* eslint-disable no-param-reassign */
-      const newSentences = state.sentences.map((sentence, index) => {
-        if (index === action.payload) {
+      const newSentences = state.sentences.map(sentence => {
+        if (sentence.id === action.payload) {
           sentence.status = toggleStatus(sentence.status)
         }
 

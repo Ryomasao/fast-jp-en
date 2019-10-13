@@ -5,7 +5,7 @@ import { jsx } from '@emotion/core'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import * as H from 'history'
 import Overlay from 'components/molecule/Overlay'
-import OutsideClickHandler from 'react-outside-click-handler'
+import OutsideClickHandler from 'react-click-outside'
 import { logout } from 'services/auth'
 
 interface OwnProps {
@@ -26,7 +26,7 @@ const SideMenu: React.FC<Props> = ({ isShow, closeSideMenu, signOut }) => {
   return (
     <React.Fragment>
       <Overlay isShow={isShow} />
-      <OutsideClickHandler onOutsideClick={() => isShow && closeSideMenu()}>
+      <OutsideClickHandler onClickOutside={() => isShow && closeSideMenu()}>
         <div
           css={{
             height: '100vh',

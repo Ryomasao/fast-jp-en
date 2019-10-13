@@ -29,7 +29,7 @@ const WordCardList: React.FC<WordCardListProps> = ({
         <WordCard
           // NOTE ひとまずindexで運用
           key={index}
-          id={index}
+          id={sentence.id}
           text={sentence[lang].sentence}
           status={sentence.status}
           changeStatus={updateStatus}
