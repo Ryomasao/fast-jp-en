@@ -20,6 +20,7 @@ const initialState = {
     sentence: '',
     note: '',
   },
+  category: '',
   uid: '',
 }
 
@@ -66,6 +67,11 @@ const RegisterPage: React.FC<RegistPageProps> = ({
     setValues({ ...values, jp: { ...values.jp, note: value } })
   }
 
+  const handleChangeCategory = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const { value } = e.target
+    setValues({ ...values, category: value })
+  }
+
   return (
     <MainTemplate authState={authState} history={history} location={location}>
       <div>Register</div>
@@ -85,6 +91,10 @@ const RegisterPage: React.FC<RegistPageProps> = ({
         <div>
           <label>メモ</label>
           <TextArea onChange={handleChangeJpNote} value={values.jp.note} />
+        </div>
+        <div>
+          <label>カテゴリ</label>
+          <TextArea onChange={handleChangeCategory} value={values.category} />
         </div>
         <Button text="登録する" type="submit" />
       </form>
