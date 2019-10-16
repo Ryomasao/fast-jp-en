@@ -7,10 +7,11 @@ import {
   createSentence as create,
 } from 'store/sentences/actions'
 
-function* runGetSentences() {
+function* runGetSentences(action: ReturnType<typeof get.start>) {
   try {
+    const uid = action.payload
     const api = fetchWordList
-    const sentences = yield call(api)
+    const sentences = yield call(api, uid)
     yield put(get.succeed({}, sentences))
   } catch (e) {
     yield put(get.fail({}, e))

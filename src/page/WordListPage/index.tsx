@@ -14,7 +14,7 @@ const mapStateToProps = (state: AppState) => {
 const mapDispatchToProps = (dispatch: Dispatch) => {
   // アクションに別名をつけたいので、dispatchを受け取って書く方式にする
   return {
-    getSentencesStart: () => dispatch(getSentences.start()),
+    getSentencesStart: (uid: string) => dispatch(getSentences.start(uid)),
     updateStatus: (id: number) => dispatch(updateStatus(id)),
     signIn: (user: User) => dispatch(signIn(user)),
     signOut: () => dispatch(signOut()),

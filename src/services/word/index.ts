@@ -6,11 +6,11 @@ interface FetchWordResult {
   wordList: WordContainer[]
 }
 
-export const fetchWordList = async () => {
+export const fetchWordList = async (uid: string) => {
   try {
     const querySnapshot = await db
       .collection('sentences')
-      .where('uid', '==', '1xtLm7lVQSck1V2xu97ujQsIPPE3')
+      .where('uid', '==', uid)
       .get()
 
     // querySnapshot.forEach(doc => {

@@ -11,12 +11,13 @@ export const updateStatus = (id: number) => {
 
 // async
 export const getSentences = {
-  start: () => {
+  start: (uid: string) => {
     return {
       // typeの型にas typeofとすることで、typeはstring型ではなく、GET_WORD_LIST_STARTという文字列を持つ、専用の型になる
       // これをすることによりswitch文で、case句に応じてどんなpayloadが来るのかをts側で判断できるようになるみたい。たぶん。
       // 例えば、payloadが存在しないアクションとかこれがないとpayloadがないってエラーになる
       type: ActionType.GET_WORD_LIST_START as typeof ActionType.GET_WORD_LIST_START,
+      payload: uid,
     }
   },
   // redux-sagaから{params, result}の形式でもらう

@@ -13,7 +13,7 @@ import WordCardList from './WordCardList'
 // type HogeProps = OwnProps & HogeState & HogeActions;
 
 interface WordPageProps extends RouteComponentProps {
-  getSentencesStart: () => void
+  getSentencesStart: (uid: string) => void
   updateStatus: (id: number) => void
   authState: AuthState
   wordState: WordState
@@ -28,7 +28,7 @@ const WordContainer: React.FC<WordPageProps> = ({
   location,
 }) => {
   useEffect(() => {
-    getSentencesStart()
+    getSentencesStart(authState.uid)
     // マウント時のみに実行したいので空の配列を指定する
     // 依存しているpropsを指定しないと、react-hooks/exhaustive-depsでwarningが出る
     // getSentenceStartは何にも依存していないので、ひとまずdisableにしとく
