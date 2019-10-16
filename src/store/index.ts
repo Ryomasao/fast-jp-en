@@ -4,6 +4,7 @@ import createSagaMiddleware from 'redux-saga'
 import mySaga from 'sagas/sentences'
 import authReducer from 'store/auth/reducer'
 import wordReducer from 'store/sentences/reducer'
+import uiReducer from 'store/ui/reducer'
 
 declare global {
   interface Window {
@@ -14,6 +15,7 @@ declare global {
 const rootReducer = combineReducers({
   wordState: wordReducer,
   authState: authReducer,
+  uiState: uiReducer,
 })
 
 const sagaMiddleware = createSagaMiddleware()

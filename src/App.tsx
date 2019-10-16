@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import ReactDOM from 'react-dom'
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import { Dispatch } from 'redux'
@@ -24,7 +25,10 @@ const App: React.FC<PageProps> = ({ signIn, signOut, authState }) => {
   }, [])
 
   return authState.userStatus === UserStatus.unknown ? (
-    <LoadingModal isShow css={{ top: 0 }} />
+    ReactDOM.createPortal(
+      <LoadingModal isShow css={{ top: 0 }} />,
+      document.getElementById('loading') as HTMLElement,
+    )
   ) : (
     <Router />
   )

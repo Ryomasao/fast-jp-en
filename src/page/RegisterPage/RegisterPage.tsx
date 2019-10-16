@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
+import ReactDOM from 'react-dom'
 import { RouteComponentProps } from 'react-router-dom'
 import MainTemplate from 'components/template/Main'
 import TextArea from 'components/atoms/TextArea'
 import Button from 'components/atoms/Button'
 import { CreateSentenceParams } from 'store/sentences/actions'
 import { AuthState } from 'services/auth/model'
+import LoadingModal from 'components/organisms/LoadingModal'
 
 interface RegistPageProps extends RouteComponentProps {
   createSentence: (params: CreateSentenceParams) => void
@@ -32,7 +34,7 @@ const RegisterPage: React.FC<RegistPageProps> = ({
 }) => {
   const [values, setValues] = useState(initialState)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     createSentence({ ...values, uid: authState.uid })
   }
@@ -98,6 +100,10 @@ const RegisterPage: React.FC<RegistPageProps> = ({
         </div>
         <Button text="登録する" type="submit" />
       </form>
+      {ReactDOM.createPortal(
+        <LoadingModal isShow={false} css={{ top: 0 }} />,
+        document.getElementById('loading') as HTMLElement,
+      )}
     </MainTemplate>
   )
 }
